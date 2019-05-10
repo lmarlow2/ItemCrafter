@@ -219,3 +219,7 @@ function updateInfoBox(id){
   var textarea = document.getElementById(id + "Info");
   textarea.innerHTML = weaponProperties[select.selectedIndex];
 }
+
+function forgeWeapon(){
+  alert("TEST");
+}
