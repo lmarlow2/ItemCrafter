@@ -6,7 +6,7 @@ body {
   margin: auto;
 }
 
-ol li, h1, h2, form label, textarea, select, input[type="text"] {
+ol li, h1, h2, form label, label, textarea, select, input[type="text"] {
   color: #ffffff;
 }
 
@@ -15,7 +15,7 @@ p {
   max-width: 600px;
 }
 
-input[type="text"], textarea {
+input[type="text"], textarea, select {
   background-color: #636363;
 }
 
