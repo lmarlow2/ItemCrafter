@@ -6,7 +6,7 @@ body {
   margin: auto;
 }
 
-ol li, h1, h2, form label, textarea, input[type="text"] {
+ol li, h1, h2, form label, textarea, select, input[type="text"] {
   color: #ffffff;
 }
 
