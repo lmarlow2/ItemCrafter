@@ -67,6 +67,7 @@ function newItem(){
   document.getElementById("weaponValue").innerHTML = weapon[1];
   document.getElementById("enchantmentName").innerHTML = "Enchantment.";
   document.getElementById("enchantmentEffect").innerHTML = "Enchantment Effect Text.";
+  document.getElementById("loreText").innerHTML = "The history of how this item came to be, who made it, who used it, battles whose outcomes it changed, etc...";
 }
 
 function updateInfoBox(id){
