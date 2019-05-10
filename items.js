@@ -184,6 +184,18 @@ var enchantments =["Forceful	adds 1d6 force damage",
                    "N/A	-"
 ];
 
+weaponProperties = [ "Increase the damage die from d4 to d6. You can select this property again to increase the damage die of a ranged weapon or a martial weapon to a d8.",
+                    "(Melee only.) You use your choice of your Strength or Dexterity modifier for the attack and damage rolls. You must use the same modifier for both rolls. Optional Limitations: This property cannot be combined with the Heavy or Versatile properties. This property cannot be combined with the brutal property when applied to a simple weapon.",
+                    "(Martial only.) Increase the damage die from a d4 to a d8, a d6 to a d10 or a d8 to d12. This weapon gains the Two-handed property if it didn't have it already. Small creatures have disadvantage on attack rolls with this weapon. Limitation: This property cannot increase a ranged weapon's damage dice to a d12.",
+                    "(Melee only.) This weapon is ideal for two-weapon fighting. This cannot be combined with the heavy property. Optional Limitation: This property can only be applied to weapons with a damage die of d4 or d6. This property can't be combined with the versatile property",
+                    "(Ranged only.) Remove the Two-handed property. Limitation: This counts as two properties for a simple ranged weapon.",
+                    "(Ranged only.) Remove the Loading property.",
+                    "(Martial melee only.) Your reach increase by 5 feet when using the weapon. Limitation: This counts as two properties unless the weapon has the Heavy property.",
+                    "(Ranged only.) Increase the range of a simple ranged weapon to 80/320. Increase the range of a martial ranged weapon to 150/600.",
+                    "(Melee only.) You can throw this weapon to make a ranged attack with a range of 20/60. You use the same ability modifier for that attack roll and damage roll that you would use for a melee attack with the weapon. You can select this property again to increase the range to 30/120. Limitation: This can only be applied to weapons with a damage die of d4 or d6.",
+                    "(Melee only.) This weapon can be used with one or two hands. Increase the damage die for melee attacks when wielded with two hands from a d4 to a d6, from a d6 to a d8, or from a d8 to a d10. This cannot be combined with the Heavy property."
+];
+
 function newItem(){
   var weaponInfoID = Math.floor(Math.random() * (weaponTypes.length - 1));
   var enchantmentInfoID = Math.floor(Math.random() * (enchantments.length - 1));
@@ -199,4 +211,10 @@ function newItem(){
   document.getElementById("weaponValue").innerHTML = weapon[1];
   document.getElementById("enchantmentName").innerHTML = enchantment[0];
   document.getElementById("enchantmentEffect").innerHTML = enchantment[1];
+}
+
+function updateInfoBox(id){
+  var select = document.getElementById(id);
+  var textarea = document.getElementById(id + "Info");
+  textarea.innerHTML = weaponProperties[select.selectedIndex];
 }
