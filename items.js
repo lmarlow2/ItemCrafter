@@ -54,9 +54,7 @@ weaponProperties = [ "Increase the damage die from d4 to d6. You can select this
 
 function newItem(){
   var weaponInfoID = Math.floor(Math.random() * (weaponTypes.length - 1));
-  var enchantmentInfoID = Math.floor(Math.random() * (enchantments.length - 1));
   var weapon = weaponTypes[weaponInfoID].split("\t");
-  var enchantment = enchantments[enchantmentInfoID].split("\t");
   document.getElementById("weaponName").innerHTML = weapon[0];
   document.getElementById("weaponClass").innerHTML = weapon[5];
   document.getElementById("weaponDamage").innerHTML = weapon[2];
