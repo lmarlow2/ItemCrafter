@@ -85,7 +85,11 @@
 <textarea rows="4" readonly id="propertyThreeInfo">Increase the damage die from d4 to d6. You can select this property again to increase the damage die of a ranged weapon or a martial weapon to a d8.</textarea>
 <br /><br /><br />
 
-<label for="effectsText">Special Effects:</label>
+<label for="effectName">Enchantment Name:</label>
+<input type="text" id="effectName"></input>
+<br /><br /><br />
+
+<label for="effectsText">Enchantment Effects:</label>
 <textarea id="effectsText"></textarea>
 <br /><br /><br />
 
@@ -138,6 +142,14 @@
 			<div class="property-block">
 				<h4 id="enchantmentName">enchantmentName</h4>
 				<p id="enchantmentEffect">enchantmentEffect</p>
+			</div> <!-- property block -->
+		</div> <!-- actions -->
+	</div> <!-- section right -->
+	<div class="section-right">
+		<div class="actions">
+			<h3>History</h3>
+			<div class="property-block">
+				<p id="loreText" style="font-style: italic;">Item Lore</p>
 			</div> <!-- property block -->
 		</div> <!-- actions -->
 	</div> <!-- section right -->
