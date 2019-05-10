@@ -195,6 +195,7 @@ weaponProperties = [ "Increase the damage die from d4 to d6. You can select this
                     "(Melee only.) You can throw this weapon to make a ranged attack with a range of 20/60. You use the same ability modifier for that attack roll and damage roll that you would use for a melee attack with the weapon. You can select this property again to increase the range to 30/120. Limitation: This can only be applied to weapons with a damage die of d4 or d6.",
                     "(Melee only.) This weapon can be used with one or two hands. Increase the damage die for melee attacks when wielded with two hands from a d4 to a d6, from a d6 to a d8, or from a d8 to a d10. This cannot be combined with the Heavy property."
 ];
+weaponPropertyList = ["Brutal", "Finesse", "Heavy", "Light", "One-Handed", "Rapid-Fire", "Reach", "Sniping", "Thrown", "Versatile"];
 
 function newItem(){
   var weaponInfoID = Math.floor(Math.random() * (weaponTypes.length - 1));
@@ -222,15 +223,18 @@ function updateInfoBox(id){
 
 function forgeWeapon(){
   var damageDie = 4;
+  var minRange = 30;
+  var maxRange = 120;
+  var weight = 1;
   document.getElementById("weaponName").innerHTML = document.getElementById("nameWeapon").value;
   document.getElementById("weaponClass").innerHTML = (document.getElementById("weaponType").selectedIndex == 0 ? "Simple " : "Martial ") + (document.getElementById("weaponRanges").selectedIndex == 0 ? "Melee " : "Ranged ") + "Weapon";
   document.getElementById("weaponDamage").innerHTML = "1d" + damageDie;
-  document.getElementById("weaponDamageType").innerHTML = {"Bludgeoning", "Piercing", "Slashing"}[document.getElementById("damageType").selectedIndex];
-  document.getElementById("weaponRange").innerHTML = weapon[6];
-  document.getElementById("weaponProperties").innerHTML = weapon[7];
-  document.getElementById("weaponWeight").innerHTML = weapon[4];
-  document.getElementById("weaponValue").innerHTML = weapon[1];
-  document.getElementById("enchantmentName").innerHTML = enchantment[0];
-  document.getElementById("enchantmentEffect").innerHTML = enchantment[1];
-  document.getElementById("loreText").innerHTML = "The history of how this item came to be, who made it, who used it, battles whose outcomes it changed, etc...";
+  document.getElementById("weaponDamageType").innerHTML = ["Bludgeoning", "Piercing", "Slashing"][document.getElementById("damageType").selectedIndex];
+  document.getElementById("weaponRange").innerHTML = document.getElementById("weaponRanges").selectedIndex == 0 ? "5 ft." : ("" + minRange + "/" + maxRange);
+  document.getElementById("weaponProperties").innerHTML = weaponPropertyList[document.getElementById("propertyOne").selectedIndex] + ", " + weaponPropertyList[document.getElementById("propertyTwo").selectedIndex] + ", " + weaponPropertyList[document.getElementById("propertyThree").selectedIndex];
+  document.getElementById("weaponWeight").innerHTML = "" + weight + " lbs";
+  document.getElementById("weaponValue").innerHTML = (document.getElementById("weaponType").selectedIndex == 0 ? (document.getElementById("weaponRanges").selectedIndex == 0 ? "1 gp" : "25 gp") : (document.getElementById("weaponRanges").selectedIndex == 0 ? "25 gp" : "50 gp"));
+  document.getElementById("enchantmentName").innerHTML = document.getElementById("effectName").value;
+  document.getElementById("enchantmentEffect").innerHTML = document.getElementById("effectsText").value;
+  document.getElementById("loreText").innerHTML = document.getElementById("flavorText").value;
 }
