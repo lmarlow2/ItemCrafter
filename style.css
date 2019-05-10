@@ -1,0 +1,18 @@
+ol li, h1, h2, form label, textarea, input[type="text"] {
+  color: #ffffff;
+}
+
+p {
+  color: #ffffff;
+  max-width: 600px;
+}
+
+input[type="text"], textarea {
+  background-color: #636363;
+}
+
+.center {
+  max-width: 600px;
+  margin: auto;
+  text-align: center;
+}
