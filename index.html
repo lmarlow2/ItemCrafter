@@ -1,0 +1,72 @@
+<head>
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#000000">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./statBlock.css">
+  <script src="./itemGenerator.js"></script>
+</head>
+<body bgcolor="#000000" onload="newItem()">
+<div>
+  <font color="white">Inspired by the <a href="https://homebrewery.naturalcrit.com/new" style="color:lightblue">Homebrewery.</a></font><br /><br />
+  <button onclick="print()">Print</button>&emsp<button onclick="newItem()">Generate New Item</button>
+</div><br /><br />
+  <div class="stat-block">
+	<hr class="orange-border" />
+	<div class="section-left">
+		<div class="creature-heading">
+			<h1 id="weaponName">weaponName</h1>
+			<h2 id="weaponClass">weaponClass</h2>
+		</div> <!-- creature heading -->
+		<svg height="5" width="100%" class="tapered-rule">
+	    <polyline points="0,0 400,2.5 0,5"></polyline>
+	  </svg>
+		<div class="top-stats">
+			<div class="property-line first">
+				<h4>Category</h4>
+				<p>Items</p>
+			</div> <!-- property line -->
+			<div class="property-line">
+				<h4>Damage</h4>
+				<p id="weaponDamage">weaponDamage</p>
+			</div> <!-- property line -->
+			<div class="property-line">
+				<h4>Damage Type</h4>
+				<p id="weaponDamageType">weaponDamageType</p>
+			</div> <!-- property line -->
+			<div class="property-line">
+				<h4>Range</h4>
+				<p id="weaponRange">weaponRange</p>
+			</div> <!-- property line -->
+			<div class="property-line">
+				<h4>Properties</h4>
+				<p id="weaponProperties">weaponProperties</p>
+			</div> <!-- property line -->
+			<div class="property-line">
+				<h4>Weight</h4>
+				<p id="weaponWeight">weaponWeight</p>
+			</div> <!-- property line -->
+			<div class="property-line last">
+				<h4>Value</h4>
+				<p id="weaponValue">weaponValue</p>
+			</div> <!-- property line -->
+	<div class="section-right">
+		<div class="actions">
+			<h3>Effects</h3>
+			<div class="property-block">
+				<h4 id="enchantmentName">enchantmentName</h4>
+				<p id="enchantmentEffect">enchantmentEffect</p>
+			</div> <!-- property block -->
+		</div> <!-- actions -->
+	</div> <!-- section right -->
+	<hr class="orange-border bottom" />
+</div> <!-- stat block -->
+	  </div>
+	</div>
+	</div>
+</body>
