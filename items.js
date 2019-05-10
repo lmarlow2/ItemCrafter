@@ -221,5 +221,16 @@ function updateInfoBox(id){
 }
 
 function forgeWeapon(){
-  alert("TEST");
+  var damageDie = 4;
+  document.getElementById("weaponName").innerHTML = document.getElementById("nameWeapon").value;
+  document.getElementById("weaponClass").innerHTML = (document.getElementById("weaponType").selectedIndex == 0 ? "Simple " : "Martial ") + (document.getElementById("weaponRanges").selectedIndex == 0 ? "Melee " : "Ranged ") + "Weapon";
+  document.getElementById("weaponDamage").innerHTML = "1d" + damageDie;
+  document.getElementById("weaponDamageType").innerHTML = {"Bludgeoning", "Piercing", "Slashing"}[document.getElementById("damageType").selectedIndex];
+  document.getElementById("weaponRange").innerHTML = weapon[6];
+  document.getElementById("weaponProperties").innerHTML = weapon[7];
+  document.getElementById("weaponWeight").innerHTML = weapon[4];
+  document.getElementById("weaponValue").innerHTML = weapon[1];
+  document.getElementById("enchantmentName").innerHTML = enchantment[0];
+  document.getElementById("enchantmentEffect").innerHTML = enchantment[1];
+  document.getElementById("loreText").innerHTML = "The history of how this item came to be, who made it, who used it, battles whose outcomes it changed, etc...";
 }
