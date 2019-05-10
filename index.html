@@ -12,10 +12,41 @@
   <script src="./items.js"></script>
 </head>
 <body bgcolor="#000000" onload="newItem()">
-<div>
-  <font color="white">Inspired by the <a href="https://homebrewery.naturalcrit.com/new" style="color:lightblue">Homebrewery.</a></font><br /><br />
-  <button onclick="print()">Print</button>&emsp<button onclick="newItem()">Generate New Item</button>
-</div><br /><br />
+	
+<label for="weaponRange">Weapon Range:</label>
+<select id="weaponRange">
+  <option value="melee">Melee</option>
+  <option value="ranged">Ranged</option>
+</select>
+	
+<label for="weaponType">Weapon Type:</label>
+<select id="weaponType">
+  <option value="simple">Simple</option>
+  <option value="martial">Martial</option>
+</select>
+	
+<label for="damageType">Damage Type:</label>
+<select id="damage Type">
+  <option value="bludgeoning">Bludgeoning</option>
+  <option value="piercing">Piercing</option>
+  <option value="slashing">Slashing</option>
+</select>
+	
+<label for="propertyOne">First Weapon Property:</label>
+<select id="propertyOne">
+</select>
+<textarea readonly id="propertyOneInfo"></textarea>
+	
+<label for="propertyTwo">First Weapon Property:</label>
+<select id="propertyTwo">
+</select>
+<textarea readonly id="propertyTwoInfo"></textarea>
+	
+<label for="propertyThree">First Weapon Property:</label>
+<select id="propertyThree">
+</select>
+<textarea readonly id="propertyThreeInfo"></textarea>
+	
   <div class="stat-block">
 	<hr class="orange-border" />
 	<div class="section-left">
