@@ -239,7 +239,13 @@ function forgeWeapon(){
   var allowedProperty = [ True, isMelee, !isSimple, isMelee, !isMelee, !isMelee, isMelee && !isSimple, !isMelee, isMelee, isMelee ];
   var pickedProperties = [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ];
   var properties = [ document.getElementById("propertyOne").selectedIndex, document.getElementById("propertyTwo").selectedIndex, document.getElementById("propertyThree").selectedIndex ];
-  for(var i = 0; i < 3; i++) pickedProperties[properties[i]]++;
+  for(var i = 0; i < 3; i++){
+    if(!allowedProperty[properties[i]]){
+      alert("Error: Attempted to add the " + weaponPropertyList[properties[i]] + " property to a weapon that cannot have that property!");
+      return;
+    }
+    pickedProperties[properties[i]]++;
+  }
   document.getElementById("weaponName").innerHTML = document.getElementById("nameWeapon").value;
   document.getElementById("weaponClass").innerHTML = (isSimple ? "Simple " : "Martial ") + (isMelee ? "Melee " : "Ranged ") + "Weapon";
   document.getElementById("weaponDamage").innerHTML = "1d" + damageDie;
