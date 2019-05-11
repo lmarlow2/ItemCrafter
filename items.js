@@ -236,7 +236,7 @@ function forgeWeapon(){
   var isReloaded = !isMelee;
   var isAmmunition = !isMelee;
   var numProperties = 3;
-  var allowedProperty = [ True, isMelee, !isSimple, isMelee, !isMelee, !isMelee, isMelee && !isSimple, !isMelee, isMelee, isMelee ];
+  var allowedProperty = [ true, isMelee, !isSimple, isMelee, !isMelee, !isMelee, isMelee && !isSimple, !isMelee, isMelee, isMelee ];
   var pickedProperties = [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ];
   var properties = [ document.getElementById("propertyOne").selectedIndex, document.getElementById("propertyTwo").selectedIndex, document.getElementById("propertyThree").selectedIndex ];
   for(var i = 0; i < 3; i++){
