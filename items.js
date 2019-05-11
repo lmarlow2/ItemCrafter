@@ -260,7 +260,9 @@ function forgeWeapon(){
     properties[2] = t;
   }
   var state = 100 * properties[0] + 10 * properties[1] + properties[2];
-  alert("" + state);
+  var possibleStates = [001,002,003,004,005,007,008,009,013,018,024,025,026,027,028,038,045,047,057,068,069,088,089,138,168,188,245,247,257,268,288,368,388,457,688,689,889];
+  var found = possibleStates.find(element => element == state);
+  if(!found) alert("The combination of properties you have entered is not possible. Please double check the rules for each property.");
   
   document.getElementById("weaponName").innerHTML = document.getElementById("nameWeapon").value;
   document.getElementById("weaponClass").innerHTML = (isSimple ? "Simple " : "Martial ") + (isMelee ? "Melee " : "Ranged ") + "Weapon";
