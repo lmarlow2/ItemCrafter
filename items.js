@@ -190,7 +190,7 @@ var weaponProperties = [ "Increase the damage die from d4 to d6. You can select 
                     "(Melee only.) This weapon is ideal for two-weapon fighting. This cannot be combined with the heavy property. Limitation: This property can only be applied to weapons with a damage die of d4 or d6. This property can't be combined with the versatile property",
                     "(Ranged only.) Remove the Two-handed property. Limitation: This counts as two properties for a simple ranged weapon.",
                     "(Ranged only.) Remove the Loading property.",
-                    "(Martial melee only.) Your reach increase by 5 feet when using the weapon. Limitation: This counts as two properties unless the weapon has the Heavy property.",
+                    "(Martial melee only.) Your reach increases by 5 feet when using the weapon. Limitation: This counts as two properties unless the weapon has the Heavy property.",
                     "(Ranged only.) Increase the range of a simple ranged weapon to 80/320. Increase the range of a martial ranged weapon to 150/600.",
                     "(Melee only.) You can throw this weapon to make a ranged attack with a range of 20/60. You use the same ability modifier for that attack roll and damage roll that you would use for a melee attack with the weapon. You can select this property again to increase the range to 30/120. Limitation: This can only be applied to weapons with a damage die of d4 or d6.",
                     "(Melee only.) This weapon can be used with one or two hands. Increase the damage die for melee attacks when wielded with two hands from a d4 to a d6, from a d6 to a d8, or from a d8 to a d10. This cannot be combined with the Heavy property."
@@ -199,16 +199,16 @@ var weaponProperties = [ "Increase the damage die from d4 to d6. You can select 
 var weaponPropertyList = ["Brutal", "Finesse", "Heavy", "Light", "One-Handed", "Rapid-Fire", "Reach", "Sniping", "Thrown", "Versatile"];
 
 function updateInfoBox(id){
-  var select = document.getElementById(id);
-  var textarea = document.getElementById(id + "Info");
+  let select = document.getElementById(id);
+  let textarea = document.getElementById(id + "Info");
   textarea.innerHTML = weaponProperties[select.selectedIndex];
 }
 
 function newItem(){
-  var weaponInfoID = Math.floor(Math.random() * (weaponTypes.length - 1));
-  var enchantmentInfoID = Math.floor(Math.random() * (enchantments.length - 1));
-  var weapon = weaponTypes[weaponInfoID].split("\t");
-  var enchantment = enchantments[enchantmentInfoID].split("\t");
+  let weaponInfoID = Math.floor(Math.random() * (weaponTypes.length - 1));
+  let enchantmentInfoID = Math.floor(Math.random() * (enchantments.length - 1));
+  let weapon = weaponTypes[weaponInfoID].split("\t");
+  let enchantment = enchantments[enchantmentInfoID].split("\t");
   document.getElementById("weaponName").innerHTML = weapon[0];
   document.getElementById("weaponClass").innerHTML = weapon[5];
   document.getElementById("weaponDamage").innerHTML = weapon[2];
@@ -226,21 +226,24 @@ function newItem(){
 }
 
 function forgeWeapon(){
-  var damageDie = 4;
-  var minRange = 30;
-  var maxRange = 120;
-  var weight = 1;
-  var isSimple = (document.getElementById("weaponType").selectedIndex == 0);
-  var isMelee = (document.getElementById("weaponRanges").selectedIndex == 0);
-  var isTwoHanded = !isMelee;
-  var isReloaded = !isMelee;
-  var isAmmunition = !isMelee;
-  var numProperties = 3;
-  var allowedProperty = [ true, isMelee, !isSimple, isMelee, !isMelee, !isMelee, isMelee && !isSimple, !isMelee, isMelee, isMelee ];
-  var pickedProperties = [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ];
-  var properties = [ document.getElementById("propertyOne").selectedIndex, document.getElementById("propertyTwo").selectedIndex, document.getElementById("propertyThree").selectedIndex ];
+  let damageDie = 4;
+  let minRange = 30;
+  let maxRange = 120;
+  let meleeRange = 5;
+  let weight = 1;
+  let isSimple = (document.getElementById("weaponType").selectedIndex == 0);
+  let isMelee = (document.getElementById("weaponRanges").selectedIndex == 0);
+  let isTwoHanded = !isMelee;
+  let isReloaded = !isMelee;
+  let isAmmunition = !isMelee;
+  let isVersatile = false;
+  let isThrown = 0;
+  let numProperties = 3;
+  let allowedProperty = [ true, isMelee, !isSimple, isMelee, !isMelee, !isMelee, isMelee && !isSimple, !isMelee, isMelee, isMelee ];
+  let pickedProperties = [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ];
+  let properties = [ document.getElementById("propertyOne").selectedIndex, document.getElementById("propertyTwo").selectedIndex, document.getElementById("propertyThree").selectedIndex ];
   
-  for(var i = 0; i < 3; i++){
+  for(let i = 0; i < 3; i++){
     if(!allowedProperty[properties[i]]){
       alert("Error: Attempted to add the " + weaponPropertyList[properties[i]] + " property to a weapon that cannot have that property!");
       return;
@@ -249,30 +252,52 @@ function forgeWeapon(){
   }
   
   //sort properties to eliminate duplicate states
-  var indexOfSmallest = properties[0] < properties[1] ? (properties[0] < properties[2] ? 0 : 2) : (properties[1] < properties[2] ? 1 : 2);
+  let indexOfSmallest = properties[0] < properties[1] ? (properties[0] < properties[2] ? 0 : 2) : (properties[1] < properties[2] ? 1 : 2);
   if(indexOfSmallest){
-    var t = properties[0];
+    let t = properties[0];
     properties[0] = properties[indexOfSmallest];
     properties[indexOfSmallest] = t;
   }
   if(properties[1] > properties[2]){
-    var t = properties[1];
+    let t = properties[1];
     properties[1] = properties[2];
     properties[2] = t;
   }
-  var state = 100 * properties[0] + 10 * properties[1] + properties[2]; //build state
-  var possibleStates = [001,002,003,004,005,007,008,009,013,018,024,025,026,027,028,038,045,047,057,068,069,088,089,138,168,188,245,247,257,268,288,368,388,457,688,689,889];
-  var found = possibleStates.find(element => element == state); //check if the state is possible
+  let state = 100 * properties[0] + 10 * properties[1] + properties[2]; //build state
+  let possibleStates = [001,002,003,004,005,007,008,009,013,018,024,025,026,027,028,038,045,047,057,068,069,088,089,138,168,188,245,247,257,268,288,368,388,457,688,689,889];
+  let found = possibleStates.find(element => element == state); //check if the state is possible
   if(!found){ //if the state is impossible display an error
     alert("The combination of properties you have entered is not possible. Please double check the rules for each property.");
     return;
   }
   
+  //Apply Damage modifiers
+  for(let i = 0; i < 3; i++){
+    switch(properties[i]){
+      case 0:
+      case 2: damageDie = damageDie + 2; break;
+      case 6: meleeRange = meleeRange + 5; break;
+      case 7:{
+        if(isSimple){
+          minRange = 80;
+          maxRange = 120;
+        }
+        else{
+          minRange = 150;
+          maxRange = 600;
+        }
+      }
+      case 8: isThrown = isThrown + 1; break;
+      case 9: isVersatile = true; break;
+      default: break;
+    }
+  }
+  
   document.getElementById("weaponName").innerHTML = document.getElementById("nameWeapon").value;
   document.getElementById("weaponClass").innerHTML = (isSimple ? "Simple " : "Martial ") + (isMelee ? "Melee " : "Ranged ") + "Weapon";
-  document.getElementById("weaponDamage").innerHTML = "1d" + damageDie;
+  document.getElementById("weaponDamage").innerHTML = "1d" + damageDie + isVersatile ? " Two-Handed: 1d" + (damageDie + 2) : "";
   document.getElementById("weaponDamageType").innerHTML = ["Bludgeoning", "Piercing", "Slashing"][document.getElementById("damageType").selectedIndex];
-  document.getElementById("weaponRange").innerHTML = document.getElementById("weaponRanges").selectedIndex == 0 ? "5 ft." : ("" + minRange + "/" + maxRange);
+  document.getElementById("weaponRange").innerHTML = (document.getElementById("weaponRanges").selectedIndex == 0 ? (meleeRange + isThrown > 0 ? " Thrown: " + (20 + 10 * (isThrown - 1)) + "/" + (60 * isThrown) + " ft.": "") : ("" + minRange + "/" + maxRange)) + " ft.";
   document.getElementById("weaponProperties").innerHTML = weaponPropertyList[properties[0]] + ", " + weaponPropertyList[properties[1]] + ", " + weaponPropertyList[properties[2]];
   document.getElementById("weaponWeight").innerHTML = "" + weight + " lbs";
   document.getElementById("weaponValue").innerHTML = (document.getElementById("weaponType").selectedIndex == 0 ? (document.getElementById("weaponRanges").selectedIndex == 0 ? "1 gp" : "25 gp") : (document.getElementById("weaponRanges").selectedIndex == 0 ? "25 gp" : "50 gp"));
