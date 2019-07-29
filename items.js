@@ -236,8 +236,8 @@ function forgeWeapon(){
   let isTwoHanded = !isMelee;
   let isReloaded = !isMelee;
   let isAmmunition = !isMelee;
-  var isVersatile = false;
-  var isThrown = 0;
+  let isVersatile = false;
+  let isThrown = 0;
   let numProperties = 3;
   let allowedProperty = [ true, isMelee, !isSimple, isMelee, !isMelee, !isMelee, isMelee && !isSimple, !isMelee, isMelee, isMelee ];
   let pickedProperties = [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ];
@@ -320,7 +320,10 @@ function copyBrew(){
 > - **Value:** ${document.getElementById("weaponValue").innerHTML}.
 >
 > ### Enchantment
-> ***${document.getElementById("enchantmentName").innerHTML}.*** ${document.getElementById("enchantmentEffect").innerHTML}`
+> ***${document.getElementById("enchantmentName").innerHTML}.*** ${document.getElementById("enchantmentEffect").innerHTML}
+>
+> ### History
+>${document.getElementById("loreText").innerHTML}`
   
   /* Dumb way that javascript forces you to copy text... */
   // Create new element
