@@ -305,3 +305,37 @@ function forgeWeapon(){
   document.getElementById("enchantmentEffect").innerHTML = document.getElementById("effectsText").value;
   document.getElementById("loreText").innerHTML = document.getElementById("flavorText").value;
 }
+
+function copyBrew(){
+  let itemString = `___
+> ## ${document.getElementById("weaponName").innerHTML}
+>*${document.getElementById("weaponClass").innerHTML}*
+> ___
+> - **Category:** Items
+> - **Damage:** ${document.getElementById("weaponDamage").innerHTML}
+> - **Damage Type:** ${document.getElementById("weaponDamageType").innerHTML}
+> - **Range:** ${document.getElementById("weaponRange").innerHTML}
+> - **Properties:** ${document.getElementById("weaponProperties").innerHTML}
+> - **Weight:** ${document.getElementById("weaponWeight").innerHTML}.
+> - **Value:** ${document.getElementById("weaponValue").innerHTML}.
+>
+> ### Enchantment
+> ***${document.getElementById("enchantmentName").innerHTML}.*** ${document.getElementById("enchantmentEffect").innerHTML}`
+  
+  /* Dumb way that javascript forces you to copy text... */
+  // Create new element
+  let tempTextArea = document.createElement('textarea');
+  // Set value (string to be copied)
+  tempTextArea.value = itemString;
+  // Set non-editable to avoid focus and move outside of view
+  tempTextArea.setAttribute('readonly', '');
+  tempTextArea.style = {position: 'absolute', left: '-9999px'};
+  document.body.appendChild(tempTextArea);
+  // Select text inside element
+  tempTextArea.select();
+  // Copy text to clipboard
+  document.execCommand('copy');
+  // Remove temporary element
+  document.body.removeChild(tempTextArea);
+  alert("Copied text to clipboard!");
+}
