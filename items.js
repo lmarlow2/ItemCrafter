@@ -236,8 +236,8 @@ function forgeWeapon(){
   let isTwoHanded = !isMelee;
   let isReloaded = !isMelee;
   let isAmmunition = !isMelee;
-  let isVersatile = false;
-  let isThrown = 0;
+  var isVersatile = false;
+  var isThrown = 0;
   let numProperties = 3;
   let allowedProperty = [ true, isMelee, !isSimple, isMelee, !isMelee, !isMelee, isMelee && !isSimple, !isMelee, isMelee, isMelee ];
   let pickedProperties = [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ];
@@ -295,9 +295,9 @@ function forgeWeapon(){
   
   document.getElementById("weaponName").innerHTML = document.getElementById("nameWeapon").value;
   document.getElementById("weaponClass").innerHTML = (isSimple ? "Simple " : "Martial ") + (isMelee ? "Melee " : "Ranged ") + "Weapon";
-  document.getElementById("weaponDamage").innerHTML = "1d" + damageDie + (isVersatile ? " Two-Handed: 1d" + (damageDie + 2) : "");
+  document.getElementById("weaponDamage").innerHTML = "1d" + damageDie + (isVersatile ? " Two-Handed 1d" + (damageDie + 2) : "");
   document.getElementById("weaponDamageType").innerHTML = ["Bludgeoning", "Piercing", "Slashing"][document.getElementById("damageType").selectedIndex];
-  document.getElementById("weaponRange").innerHTML = (document.getElementById("weaponRanges").selectedIndex == 0 ? meleeRange + (isThrown > 0 ? " Thrown: " + (20 + 10 * (isThrown - 1)) + "/" + (60 * isThrown) : "") : ("" + minRange + "/" + maxRange)) + " ft.";
+  document.getElementById("weaponRange").innerHTML = (document.getElementById("weaponRanges").selectedIndex == 0 ? meleeRange + (isThrown ? " Thrown " + (20 + 10 * (isThrown - 1)) + "/" + (60 * isThrown) : "") : ("" + minRange + "/" + maxRange)) + " ft.";
   document.getElementById("weaponProperties").innerHTML = weaponPropertyList[properties[0]] + ", " + weaponPropertyList[properties[1]] + ", " + weaponPropertyList[properties[2]];
   document.getElementById("weaponWeight").innerHTML = "" + weight + " lbs";
   document.getElementById("weaponValue").innerHTML = (document.getElementById("weaponType").selectedIndex == 0 ? (document.getElementById("weaponRanges").selectedIndex == 0 ? "1 gp" : "25 gp") : (document.getElementById("weaponRanges").selectedIndex == 0 ? "25 gp" : "50 gp"));
