@@ -4,6 +4,7 @@ body {
   align-content: center;
   width: 600px;
   margin: auto;
+  bgcolor: #000000;
 }
 
 a {
