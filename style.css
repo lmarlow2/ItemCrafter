@@ -10,11 +10,7 @@ a {
   color: #ADD8E6;
 }
 
-p {
-  color: #000000;
-}
-
-ol li, h1, h2, form label, label, textarea, select, input[type="text"] {
+p, ol, li, h1, h2, form label, label, textarea, select, input[type="text"] {
   color: #ffffff;
 }
 
