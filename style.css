@@ -6,16 +6,16 @@ body {
   margin: auto;
 }
 
-ol li, h1, h2, form label, label, textarea, select, input[type="text"] {
-  color: #ffffff;
-}
-
 a {
-  color: lightblue;
+  color: #ADD8E6;
 }
 
 p {
-  color: white;
+  color: #000000;
+}
+
+ol li, h1, h2, form label, label, textarea, select, input[type="text"] {
+  color: #ffffff;
 }
 
 input[type="text"], textarea, select {
