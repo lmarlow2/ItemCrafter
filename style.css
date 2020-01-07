@@ -14,6 +14,10 @@ a {
   color: lightblue;
 }
 
+p {
+  color: white;
+}
+
 input[type="text"], textarea, select {
   background-color: #636363;
 }
